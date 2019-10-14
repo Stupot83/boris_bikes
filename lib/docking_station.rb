@@ -1,7 +1,7 @@
 require "bike"
 
 class DockingStation
-  DEFAULT_CAPACITY = 3
+  DEFAULT_CAPACITY = 20
 
   attr_accessor :capacity
   attr_reader :bikes
@@ -19,6 +19,8 @@ class DockingStation
     raise "The dock is full!" if full?
     @bikes << bike
   end
+
+private 
 
   def full?
     @bikes.length >= @capacity
