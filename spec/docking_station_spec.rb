@@ -7,19 +7,15 @@ describe DockingStation do
   end
 
   it "successfully instantiates the DockingStation class" do
-    expect(@docking_station).to be_kind_of(DockingStation)
+    expect(@docking_station).to be_instance_of(DockingStation)
   end
 
   it "DockingStation responds to release_bike" do
     expect(@docking_station).to respond_to(:release_bike)
   end
 
-  it "DockingStation can release a bike" do
-    expect(@docking_station.release_bike).to be_truthy
-  end
-
   it "release_bike returns error if @bikes is empty" do
-    expect{ raise "No Bikes"}.to raise_error
+    expect { @docking_station.release_bike }.to raise_error("There are no docked bikes!")
   end
 
   it "DockingStation responds to dock_bike" do

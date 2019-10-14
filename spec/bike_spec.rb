@@ -6,7 +6,7 @@ describe Bike do
   end
 
   it "instantiates an instance of the Bike class" do
-    expect(@bike).to be_kind_of(Bike)
+    expect(@bike).to be_instance_of(Bike)
   end
 
   it "bike instance responds to working? method" do
@@ -14,6 +14,6 @@ describe Bike do
   end
 
   it "bike is working" do
-    expect(@bike.working?).to be_truthy
+    expect(@bike.working?).to eq true
   end
 end
