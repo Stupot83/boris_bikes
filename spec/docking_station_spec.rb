@@ -26,4 +26,15 @@ describe DockingStation do
     @docking_station.dock_bike(@bike)
     expect(@docking_station.bikes).to include(@bike)
   end
+
+  it "raises an error when the docking station is already full" do
+    @bike1 = Bike.new
+    @bike2 = Bike.new
+    @bike3 = Bike.new
+    @bike4 = Bike.new
+    @docking_station.dock_bike(@bike1)
+    @docking_station.dock_bike(@bike2)
+    @docking_station.dock_bike(@bike3)
+    expect { @docking_station.dock_bike(@bike4) }.to raise_error("The dock is full!")
+  end
 end
