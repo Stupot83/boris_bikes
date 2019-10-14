@@ -14,8 +14,18 @@ describe DockingStation do
     expect(@docking_station).to respond_to(:release_bike)
   end
 
+<<<<<<< HEAD
   it "release_bike returns error if @bikes is empty" do
     expect { @docking_station.release_bike }.to raise_error("There are no docked bikes!")
+=======
+  it "DockingStation can release a bike" do
+    expect(@docking_station.release_bike).to be_instance_of Bike
+  end
+
+  it "release_bike returns error if @bikes is empty" do
+    @docking_station.release_bike
+    expect{@docking_station.release_bike}.to raise_error("No Bikes Available")
+>>>>>>> 85668d42d03d4118ae04176b0c809044666408b4
   end
 
   it "DockingStation responds to dock_bike" do
@@ -23,8 +33,14 @@ describe DockingStation do
   end
 
   it "DockingStation can dock a bike" do
-    @docking_station.dock_bike(@bike)
-    expect(@docking_station.bikes).to include(@bike)
+    bike = rand(0..100)
+    @docking_station.dock_bike(bike)
+    expect(@docking_station.bikes).to include(bike)
+  end
+
+  it "rejects bike docking if capacity full" do
+    5.times {@docking_station.dock_bike(1)}
+    expect{@docking_station.dock_bike(1)}.to raise_error("No space available")
   end
 
   it "raises an error when the docking station is already full" do

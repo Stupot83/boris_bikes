@@ -9,9 +9,7 @@ describe Bike do
     expect(@bike).to be_instance_of(Bike)
   end
 
-  it "bike instance responds to working? method" do
-    expect(@bike).to respond_to(:working?)
-  end
+  it { is_expected.to respond_to(:working?) }
 
   it "bike is working" do
     expect(@bike.working?).to eq true
