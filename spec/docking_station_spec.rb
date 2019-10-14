@@ -29,8 +29,14 @@ describe DockingStation do
   end
 
   it "raises an error when the docking station is already full" do
-    @docking_station.capacity.times {@docking_station.dock_bike Bike.new}
-    bike20 = Bike.new 
+    @docking_station.capacity.times { @docking_station.dock_bike Bike.new }
+    bike20 = Bike.new
     expect { @docking_station.dock_bike(bike20) }.to raise_error("The dock is full!")
+  end
+
+  it "has a default capacity of 20" do
+    test_capacity = 50
+    testing_docking_station = DockingStation.new(test_capacity)
+    expect(testing_docking_station.capacity).to eq (test_capacity)
   end
 end
