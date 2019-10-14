@@ -1,20 +1,30 @@
 require "bike"
 
 class DockingStation
-  CAPACITY = 3
+  DEFAULT_CAPACITY = 3
 
+  attr_accessor :capacity
   attr_reader :bikes
 
-  def initialize
+  def initialize(capacity = DEFAULT_CAPACITY)
     @bikes = []
+    @capacity = capacity
   end
 
   def release_bike
-    raise "There are no docked bikes!" if @bikes.empty?
+    raise "There are no docked bikes!" if empty?
   end
 
   def dock_bike(bike)
-    raise "The dock is full!" if @bikes.length == CAPACITY
+    raise "The dock is full!" if full?
     @bikes << bike
+  end
+
+  def full?
+    @bikes.length >= @capacity
+  end
+
+  def empty?
+    @bikes.empty?
   end
 end
